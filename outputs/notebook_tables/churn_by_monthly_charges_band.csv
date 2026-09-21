@@ -1,0 +1,5 @@
+monthly_charges_band,customers,churned,churn_rate
+1-Low (up to $35),496,50,10.1
+2-Medium ($35-$70),482,127,26.3
+3-High ($70-$90),553,202,36.5
+4-Very high (over $90),469,152,32.4

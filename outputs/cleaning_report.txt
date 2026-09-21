@@ -1,0 +1,47 @@
+
+======================================================================
+CLEANING REPORT - Telco Customer Churn
+======================================================================
+Raw file: data\raw\Telco-Customer-Churn.csv
+SHA-256 before: 88be4b93fbe0cc83421af1c503794c97c342eca914c1576db7c276e61d61358a
+
+======================================================================
+STEP A - Cleaning the full dataset
+======================================================================
+Kept 12 of 21 columns.
+TotalCharges blanks set to 0.0 (tenure was 0): 11
+TotalCharges converted from text to a number (float64).
+Checks passed: no missing values, no blank text, no duplicate rows, customerID unique.
+
+======================================================================
+STEP B - Stratified sample
+======================================================================
+Sample size: 2000 rows x 12 columns (random_state=42)
+Rows taken per Churn group: No=1469, Yes=531
+Churn rate  full data: 26.54%   sample: 26.55%
+Rows in the sample with TotalCharges = 0.0 (new customers): 5
+
+Category mix, full data vs sample (largest gap in percentage points):
+  Contract         largest gap: 1.33 points
+  InternetService  largest gap: 0.68 points
+  PaymentMethod    largest gap: 1.13 points
+
+Saved: data\processed\telco_churn_clean_2000.csv (2000 rows x 12 columns, re-read and verified)
+
+======================================================================
+BEFORE / AFTER SUMMARY
+======================================================================
+                                  BEFORE (raw)      AFTER (clean sample)
+Rows                              7043              2000
+Columns                           21                12
+TotalCharges data type            str               float64
+Blank TotalCharges values         11                0
+Missing values (all columns)      0                 0
+Churn rate                        26.54%            26.55%
+
+======================================================================
+RAW FILE SAFETY CHECK (SHA-256)
+======================================================================
+Before: 88be4b93fbe0cc83421af1c503794c97c342eca914c1576db7c276e61d61358a
+After:  88be4b93fbe0cc83421af1c503794c97c342eca914c1576db7c276e61d61358a
+Result: IDENTICAL - the raw file was not modified.
