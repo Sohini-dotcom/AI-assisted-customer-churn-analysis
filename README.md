@@ -115,10 +115,41 @@ High Risk Customers = CALCULATE(COUNTROWS(scores), scores[risk_tier] = "High")
 Expected Revenue at Risk = SUMX(customers, customers[MonthlyCharges] * RELATED(scores[churn_probability]))
 ```
 
-### Step 7: LLM API Experiments (optional)
+### 7. LLM API Integration
 
-* `src/llm_hello.py` and `src/llm_json_test.py` show how to call the Claude API from Python and receive **validated JSON** (sentiment, topic, urgency for a customer comment).
-* The parsing and validation logic, including retries on invalid replies, was tested offline. **The scripts were not run against the live API, so no AI-generated output is included.** They need your own API key in a `.env` file.
+Built a full pipeline for calling an LLM from Python: generating a realistic
+customer comment from a customer's real account details, then classifying
+that comment into **validated, structured JSON** (sentiment, topic, urgency),
+with automatic retries on invalid output, temporary server errors, and daily
+rate limits.
+
+**Tested live against Google's Gemini API** (free tier) on 10 real customers
+from the dataset (5 churned, 5 retained). Sample result:
+
+| customerID | Churn | Sentiment | Topic | Urgency |
+|---|---|---|---|---|
+| 6323-AYBRX | Yes | negative | price | 5 |
+| 2636-OHFMN | Yes | negative | price | 5 |
+| 1025-FALIX | No | positive | network_quality | 1 |
+| 9137-NOQKA | No | positive | price | 1 |
+
+Full results: [`outputs/sample_customer_comments.csv`](outputs/sample_customer_comments.csv)
+
+**Important limitation:** the comment-generation prompt was given the
+customer's actual churn outcome as an input, so generated comments naturally
+matched that outcome, and the classification step then correctly detected the
+sentiment it was given. This confirms the pipeline works end-to-end
+(prompting, JSON validation, retries, rate-limit handling), but it does **not**
+demonstrate that sentiment analysis predicts real churn — the "opinions" were
+synthetic and already consistent with the known label. Real customer text
+would be needed to test that claim properly.
+
+**Engineering notes:** the free-tier API enforces a hard daily request quota
+per model. The final script handles this by checking already-processed
+customers before each run (so repeated runs make incremental progress rather
+than repeating work), retrying with exponential backoff on temporary server
+errors, and safely appending new results rather than overwriting the output
+file on a partial or failed run.
 
 ## 5. Dashboard
 
@@ -255,21 +286,23 @@ ai-assisted-customer-churn-analysis
 │   ├── clean_data.py
 │   ├── features.py
 │   ├── mychecks.py
-│   ├── llm_hello.py
-│   └── llm_json_test.py
+│   ├── llm_hello_gemini.py
+│   └── llm_json_test_gemini.py
 │
 ├── dashboard/
-│   |
+│   ├── churn_dashboard.pbix
 │   ├── churn_dashboard.pdf
 │   └── screenshots/
 │       ├── overview.png
 │       ├── churn_drivers.png
 │       └── action_plan.png
 │
-├── outputs/                     (cleaning report, charts, summary tables)
+├── outputs/  
+|── sample_customer_comments.csv                   (cleaning report,summary tables)
 ├── CLAUDE.md
 ├── requirements.txt
 └── README.md
+
 ```
    The 'data/raw/' and 'data/processed/' folders are not published, because the source dataset is © Original Authors. Running the scripts in Section 7 regenerates the processed files.
 
