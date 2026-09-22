@@ -1,0 +1,11 @@
+customerID,Churn,comment,sentiment,topic,urgency
+6323-AYBRX,Yes,"Been with these guys for nearly five years paying by check for a basic landline, but the price hikes and outdated payment options are just not worth it anymore. I finally cancelled my service and moved on.",negative,price,5
+2636-OHFMN,Yes,"Switched to this DSL service a few months ago on a month-to-month plan, but at nearly fifty bucks a month with zero tech support or security add-ons, it just wasn't worth it anymore.",negative,price,5
+6173-ITPWD,Yes,"After nearly four years on a month-to-month fiber plan with zero tech add-ons, I finally had enough when my automatic bank payments crept up to over $83 a month for just the basics.",negative,price,4
+7613-LLQFO,Yes,"Been with them a full year on the month-to-month fiber plan, but at nearly 85 bucks a month with zero add-ons or tech support included, it’s just not worth it anymore. I finally got tired of the constant electronic check hassles and decided to cancel my service.",negative,price,5
+7242-QZLXF,Yes,"Just signed up a month ago for the basic DSL since it was cheap, but the connection keeps dropping and trying to pay by electronic check is a hassle with no tech support to help, so I'm already canceling.",negative,network_quality,5
+1025-FALIX,No,"Been with them for over two years now on the fiber plan and it's been pretty solid. Auto-pay makes it hassle-free, though I wish tech support was included for the price.",positive,network_quality,1
+0396-UKGAI,No,"Been with them for almost two years now on the DSL plan with auto-pay, and while I wish I had online security included, the tech support has been decent enough to keep me from switching.",neutral,customer_support,2
+1121-QSIVB,No,"Been with them for a few years now on the yearly plan and the DSL gets the job done for basic browsing, though having to mail checks every month is a bit old school.",neutral,billing,2
+9137-NOQKA,No,Signed up for the basic month-to-month plan a couple of months ago and it's been super affordable so far just paying online.,positive,price,1
+6131-FOYAS,No,"Been with them for almost three years on the month-to-month DSL plan and it gets the job done for the price, though setting up online security myself was a bit of a hassle without tech support.",neutral,price,2
