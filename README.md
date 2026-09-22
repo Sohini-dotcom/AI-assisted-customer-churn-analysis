@@ -157,15 +157,15 @@ The Power BI dashboard has three pages that move from an overview to drivers to 
 
 **Page 1: Overview.** How big is the churn problem, and where is it concentrated?
 
-![Overview page](dashboard/overview.png)
+![Overview page](dashboard/Overview.png)
 
 **Page 2: Churn Drivers.** Who leaves, and what do they have in common?
 
-![Churn Drivers page](dashboard/churn_drivers.png)
+![Churn Drivers page](dashboard/Churn Drivers.png)
 
 **Page 3: Action Plan.** Which customers are at highest risk, and why?
 
-![Action Plan page](dashboard/action_plan.png)
+![Action Plan page](dashboard/Action Plan.png)
 
 **Key dashboard components:**
 
