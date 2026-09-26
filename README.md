@@ -1,4 +1,4 @@
-# Customer Churn Analysis
+# AI assisted Customer Churn Analysis
 
 ## 1. Overview
 
